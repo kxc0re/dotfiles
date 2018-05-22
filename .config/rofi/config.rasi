@@ -1,0 +1,208 @@
+/**
+ * ROFI Color theme
+ * User: Qball
+ * Copyright: Dave Davenport
+ */
+
+configuration {
+	modi: 							"combi,:rofind";
+	//combi-modi: 					"window,drun,\/:rofind,run";
+	combi-modi: 					"window,drun,run";
+	me-select-entry:				"MouseSecondary";
+	me-accept-entry:				"MousePrimary";
+	scroll-method: 1;
+    // The display name of this browser
+    display-ssh:                   "ssh";
+    // The display name of this browser
+    display-run:                    "#! ";
+    // The display name of this browser
+    display-drun:                   "";
+    // The display name of this browser
+    display-window:                 "";
+    display-combi:                  "Go to: ";
+    show-icons: true;
+}
+
+
+/**
+ * User: kxc0re
+ * Copyright: Enrico Markert
+ */
+* {
+    foreground:  #ebdbb2;
+    backlight:   #282828;
+    background-color:  @black;
+    dark: #1c1c1c;
+    // Black
+    black:       #282828;
+    lightblack:  #928374;
+    tlightblack:  #928374cc;
+    //
+    // Red
+    red:         #cc241d;
+    lightred:    #fb4934;
+    //
+    // Green
+    green:       #98971a;
+    lightgreen:  #b8bb26;
+    //
+    // Yellow
+    yellow:      #d79921;
+    lightyellow:     #fabd2f;
+    //
+    // Blue
+    blue:      #458588;
+    lightblue:     #83a598;
+    //
+    // Magenta
+    magenta:      #b16286;
+    lightmagenta:     #d3869b;
+    //
+    // Cyan
+    cyan:      #689d6a;
+    tcyan:      #8ec07ccc;
+    lightcyan:     #8ec07c;
+    //
+    // White
+    white:      #a89984;
+    lightwhite:     #ebdbb2;
+
+		orange: #ff6600;
+		torange: #ff6600cc;
+		lightorange: #fc8f2f;
+    darkorange: #e55b00;
+
+    anotherorange: #ff751a;
+
+    lighterorange: #ff8533;
+    darkerorange: #e65c00;
+
+
+
+    //
+    // Bold, Italic, Underline
+    highlight:     underline bold #ebdbb2;
+
+    transparent: rgba(0,0,0,0);
+    font: "Fira Code 14";
+}
+#window {
+    location: center;
+    anchor:   center;
+    transparency: "screenshot";
+    padding: 10px;
+    border:  0px;
+//    border-radius: 10px;
+    color: @magenta;
+    background-color: @transparent;
+    spacing: 5px;
+    children:  [vertb, mainbox];
+    orientation: horizontal;
+}
+
+#mainbox {
+    spacing: 0;
+    children: [ inputbar, message, listview ];
+}
+
+#message {
+    border-color: @foreground;
+    border:  0px 2px 2px 2px;
+//    border-radius: 10px;
+    padding: 5px;
+    background-color: @torange;
+    font: "Fira Code 8";
+    color: @black;
+}
+
+#inputbar {
+    color: @orange;
+    padding: 11px;
+    background-color: @black;
+    border: 2px 2px 2px 2px;
+//    border-radius:  30px 30px 0px 0px;
+    border-color: @foreground;
+    font: "Fira Code 16";
+}
+
+#entry,prompt,case-indicator {
+    text-font: inherit;
+    text-color:inherit;
+}
+#listview {
+    padding: 8px;
+//    border-radius: 0px 0px 30px 30px;
+    border-color: @foreground;
+    border: 0px 2px 2px 2px;
+    background-color: #1c1c1ccc;
+    dynamic: false;
+    lines: 15;
+}
+#element {
+    padding: 3px;
+    vertical-align: 0.5;
+//    border: 2px;
+//    border-radius: 4px;
+    background-color: transparent;
+    color: @foreground;
+    font:inherit;
+}
+#element selected.normal {
+    background-color: @orange;
+}
+#element normal active {
+    foreground: @lightblue;
+}
+#element normal urgent {
+    foreground: @lightred;
+}
+#element alternate normal {
+}
+#element alternate active {
+    foreground: @lightblue;
+}
+#element alternate urgent {
+    foreground: @lightred;
+}
+#element selected active {
+    background-color: @orange;
+    foreground: @dark;
+}
+#element selected urgent {
+    background-color: @lightred;
+    foreground: @dark;
+}
+#element normal normal {
+
+}
+
+#vertb {
+    expand: false;
+    children: [ dummy0, sidebar, dummy1  ];
+}
+#dummy0,  dummy1 {
+    expand: true;
+}
+
+#sidebar {
+    expand: false;
+    orientation: vertical;
+    spacing: 0px;
+    border: 0px 0px 0px 0px;
+}
+#button {
+    font: "FontAwesome 26";
+    padding: 10px;
+    border: 2px 0px 2px 2px;
+//    border-radius: 4px 0px 0px 4px;
+    background-color: @tlightblack;
+    border-color: @foreground;
+    color: @foreground;
+    horizontal-align: 0.5;
+}
+#button selected normal {
+    color: @dark;
+    border: 2px 0px 2px 2px;
+    background-color: @backlight;
+    border-color: @foreground;
+}

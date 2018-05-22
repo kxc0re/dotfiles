@@ -1,0 +1,214 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[colors]
+background = ${xrdb:color0:#222}
+;background = #222
+background-alt = #444
+foreground = ${xrdb:color7:#222}
+;foreground = #dfdfdf
+foreground-alt = #555
+primary = #ff6600
+secondary = #b8bb26
+alert = #cc241d
+
+[fonts]
+font-0 = Fira Code:pixelsize=11:antialias=true;1
+font-1 = Noto Sans CJK JP Bold:pixelsize=12:antialias=true;1
+font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-3 = Ionicons:style=Medium:pixelsize=12;1
+font-4 = siji:pixelsize=10;1
+
+[bar/common]
+inherit = fonts
+width = 100%
+height = 30
+radius = 0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+tray-position = right
+tray-padding = 2
+
+wm-restack = bspwm
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+cursor-click = pointer
+cursor-scroll = pointer
+
+[bar/m1]
+inherit = bar/common
+monitor = ${env:MONITOR:DVI-I-1}
+
+modules-left = bspwm
+modules-center = xwindow
+modules-right = volume date
+
+[bar/m2]
+inherit = bar/common
+monitor = ${env:MONITOR:DP-1}
+
+modules-left = bspwm
+modules-center = mpd
+modules-right = volume memory cpu  eth date powermenu
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %name%
+label-focused-font = 3
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %name%
+label-occupied-padding = 2
+
+label-urgent = %name%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %name%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2i
+
+[module/mpd]
+type = internal/mpd
+format-online = <icon-prev> <toggle> <icon-next> <label-song>
+
+host = 127.0.0.1
+port = 6600
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+bar-progress-width = 10
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "cpu "
+format-prefix-foreground = ${colors.foreground-alt}
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "ram "
+format-prefix-foreground = ${colors.foreground-alt}
+label = %percentage_used%%
+
+[module/eth]
+type = internal/network
+interface = enp5s0f0
+interval = 3.0
+
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = "%dd.%mm%yy"
+
+time = %H:%M
+time-alt = %H:%M
+
+label = %date% %time%
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume>
+label-volume = sound on
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini
