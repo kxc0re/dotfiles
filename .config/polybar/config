@@ -1,15 +1,7 @@
-;=====================================================
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;=====================================================
-
+#TODO load colors from palette and stop using making this messy to style
 [colors]
 background = ${xrdb:color0:#222}
-;background = #222
+
 background-alt = #444
 foreground = ${xrdb:color7:#222}
 ;foreground = #dfdfdf
