@@ -1,112 +1,114 @@
 ﻿# bspwm hotkeys
-	# Cleanly quit bspwm
-	super + shift + q
-		bspc quit
+# Cleanly quit bspwm
+super + shift + q
+	bspc quit
 
-	# make sxhkd reload its configuration files:
-	super + shift + Escape
-		pkill -USR1 -x sxhkd
+# make sxhkd reload its configuration files:
+super + shift + Escape
+	pkill -USR1 -x sxhkd
 
 # applications
-	# rofi
-	super + shift + space
-		rofi -show
+# rofi
+super + shift + space
+	rofi -show
+# terminal
+super + z
+	default-terminal
 
-	# terminal
-	super + {shift + Return,z}
-		default-terminal
+# terminal
+super + {shift + Return,z}
+	default-terminal
 
-	# browser	
-	super + shift + b
-		$BROWSER
+# browser	
+super + shift + b
+	$BROWSER
 
-	# filemanager    		
-	super + e
-		spacefm -n
+# filemanager    		
+super + e
+	spacefm -n
 
-	#terminal
-	super + shift + e
-		default-terminal ranger
+#terminal
+super + shift + e
+	default-terminal ranger
 
-	#screenshot
-	Print
-		scrot
+#screenshot
+Print
+	scrot
 
 # window manipulation
-	# Close window
-	super + {_,shift + } x
-		bspc node {-c,-k}
+# Close window
+super + {_,shift + } x
+	bspc node {-c,-k}
 
 
-	# Force all windows of the desktop to float and arrange them
-	super + ctrl + shift + t
-		bspcp float
+# Force all windows of the desktop to float and arrange them
+super + ctrl + shift + t
+	bspcp float
 	
-	# Toggle fullscreen
-	super  + f 
-		bspc node -t {fullscreen,tiled}	
+# Toggle fullscreen
+super  + f 
+	bspc node -t {fullscreen,tiled}	
 
-
-	# Move current window to largest space or preselected area if there is one.
-	super + Return
-    		windowpromoter
-
+# Move current window to largest space or preselected area if there is one.
+super + Return
+	windowpromoter
 	
-	# go / move to desktop 
-	super + {_,shift + }{1-9,0}
-		bspc {desktop -f,node -d} ^{1-9,10}
+# go / move to desktop 
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} ^{1-9,10}
 
-	# Select previous / next desktop
-	super + {m,n}
-		bspc desktop -f {prev.occupied,next.occupied} 
+# Select previous / next desktop
+super + {m,n}
+	bspc desktop -f {prev.occupied,next.occupied} 
 
-	# cycle windows
-	alt + {_,shift + }Tab
-    		bspc node -f {next,prev}
+# cycle windows
+alt + {_,shift + }Tab
+	bspc node -f {next,prev}
 
-	# Go to specific window
-	super + Tab
-		WindowSelector
+# Go to specific window
+super + Tab
+	WindowSelector
 	
-	# move focus
-	super +  {Left,Down,Up,Right}
-		focusmover {west,south,north,east}
+# move focus
+super +  {Left,Down,Up,Right}
+	focusmover {west,south,north,east}
         	
 
-	# Toggle monocle mode
-	super + shift + f 
-		bspc desktop -l next
+# Toggle monocle mode
+super + shift + f 
+	bspc desktop -l next
 	
-	# Balance tree
-	super + b
-		bspc node @/ -B
+# Balance tree
+super + b
+	bspc node @/ -B
 
-	# Balance brother node. If you do this on biggest window of the desktop, it usually means balancing all windows with except the biggest.
-	super + alt + b
-		bspc node @brother -B
+# Balance brother node. If you do this on biggest window of the desktop, it usually means balancing all windows with except the biggest.
+super + alt + b
+	bspc node @brother -B
 	
-	# Undo balancing (equalize windows)
-	super + ctrl + b
-		bspc node @/ -E
+# Undo balancing (equalize windows)
+super + ctrl + b
+	bspc node @/ -E
+
 # Media keys
 
-	XF86AudioRaiseVolume
-		volume up
+XF86AudioRaiseVolume
+	volume up
 
-	XF86AudioLowerVolume
-		volume down
+XF86AudioLowerVolume
+	volume down
 
-	XF86AudioMute
-		volume mute
+XF86AudioMute
+	volume mute
 	
-	XF86MonBrightnessDown
-		light -U 5 
+XF86MonBrightnessDown
+	light -U 5 
 
-	XF86MonBrightnessUp
-		light -A 5
+XF86MonBrightnessUp
+	light -A 5
  
-	XF86Sleep
-		systemctl suspend
-
+XF86Sleep
+	systemctl suspend
+	
 
 
