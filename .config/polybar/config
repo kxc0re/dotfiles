@@ -11,18 +11,21 @@ secondary = #b8bb26
 alert = #cc241d
 
 [fonts]
-font-0 = Fira Code:pixelsize=11:antialias=true;1
-font-1 = Noto Sans CJK JP Bold:pixelsize=12:antialias=true;1
-font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-3 = Ionicons:style=Medium:pixelsize=12;1
-font-4 = siji:pixelsize=10;1
+font-0 = Fira Code:pixelsize=11:antialias=true
+font-1 = Noto Sans CJK JP Bold:pixelsize=12:antialias=true
+font-2 = Ionicons:pixelsize=12
+font-3 = Icons:pixelsize=12
+font-4 = Font Awesome 5 Free:pixelsize=12:antialias=true
+font-5 = unifont:fontformat=truetype:size=8:antialias=false
+font-6 = siji:pixelsize=10
+font-7 = Fura Code Nerd Font Mono:pixelsize=16
 
 [bar/common]
 inherit = fonts
 width = 100%
 height = 30
 radius = 0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -63,8 +66,8 @@ inherit = bar/common
 monitor = ${env:MONITOR:DP-1}
 
 modules-left = bspwm
-modules-center = mpd
-modules-right = volume memory cpu  eth date powermenu
+modules-center = spotify 
+modules-right = volume memory cpu  eth time 
 
 [module/xwindow]
 type = internal/xwindow
@@ -90,26 +93,16 @@ label-empty = %name%
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2i
 
-[module/mpd]
-type = internal/mpd
-format-online = <icon-prev> <toggle> <icon-next> <label-song>
+[module/spotify]
+type = custom/script
+interval = 2
+format = <label>
+label-maxlen = 48
+format-prefix = " "
 
-host = 127.0.0.1
-port = 6600
+exec = ~/.config/polybar/spotify.sh
+exec-if = pgrep -f "Spotify"
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
-bar-progress-width = 10
-bar-progress-indicator = |
-bar-progress-fill = ─
-bar-progress-empty = ─
 
 [module/cpu]
 type = internal/cpu
@@ -130,8 +123,8 @@ type = internal/network
 interface = enp5s0f0
 interval = 3.0
 
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
+;format-connected-prefix = " "
+;format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
 format-disconnected =
@@ -144,24 +137,28 @@ format-disconnected =
 type = internal/date
 interval = 5
 
-date =
-date-alt = "%dd.%mm%yy"
+date = "%a %d %B %Y"
 
 time = %H:%M
 time-alt = %H:%M
 
 label = %date% %time%
 
+[module/time]
+inherit= module/date
+
+date = 
+
 [module/volume]
 type = internal/volume
 
 format-volume = <label-volume>
-label-volume = sound on
+label-volume = ""
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
+;format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+label-muted = ""
 
 [module/powermenu]
 type = custom/menu
