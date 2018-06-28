@@ -75,7 +75,10 @@ if ${use_color} ; then
 		PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]\$\[\033[00m\] '
 	fi
 
-	alias ls='ls --color=auto'
+	function ls() {
+		command ls "$@" --color
+	}
+
 	alias grep='grep --colour=auto'
 	alias egrep='egrep --colour=auto'
 	alias fgrep='fgrep --colour=auto'
@@ -90,12 +93,17 @@ fi
 
 unset use_color safe_term match_lhs sh
 
-alias cp="cp -i"                          # confirm before overwriting something
+alias cp='cp -i'                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias np='nano -w PKGBUILD'
 alias more=less
-alias gksudo="gksu"
+alias gksudo='gksu'
+
+alias vim='nvim'
+alias vi='nvim'
+alias vimdiff='nvim -d'
+export EDITOR=nvim
 
 xhost +local:root > /dev/null 2>&1
 
@@ -114,7 +122,17 @@ shopt -s expand_aliases
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
 
-#
+
+#javafix
+wmname LG3D
+
+# better yaourt colors
+export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
+
+#########################################################
+#		HELPER FUNCTIONS			#
+########################################################
+
 # # ex - archive extractor
 # # usage: ex <file>
 ex ()
@@ -139,5 +157,12 @@ ex ()
   fi
 }
 
-# better yaourt colors
-export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
+# # make dir and cd into it
+# # usage: ndir <path>
+
+ndir() {
+	mkdir -p -- "$1" &&
+		cd -P -- "$1"
+
+}
+

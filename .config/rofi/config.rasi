@@ -67,8 +67,8 @@ configuration {
     white:      #a89984;
     lightwhite:     #ebdbb2;
 
-		orange: #ff6600;
-		torange: #ff6600cc;
+		orange: #fe8019;
+		torange: #fe8019cc;
 		lightorange: #fc8f2f;
     darkorange: #e55b00;
 

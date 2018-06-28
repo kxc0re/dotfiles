@@ -1,12 +1,12 @@
 #TODO load colors from palette and stop using making this messy to style
 [colors]
-background = ${xrdb:color0:#222}
+background = ${xrdb:color0:#282828}
 
 background-alt = #444
 foreground = ${xrdb:color7:#222}
 ;foreground = #dfdfdf
 foreground-alt = #555
-primary = #ff6600
+primary = #fe8019
 secondary = #b8bb26
 alert = #cc241d
 
@@ -71,7 +71,7 @@ modules-right = volume memory cpu  eth time
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:120:...%
 
 [module/bspwm]
 type = internal/bspwm
@@ -97,7 +97,7 @@ label-empty-padding = 2i
 type = custom/script
 interval = 2
 format = <label>
-label-maxlen = 48
+label-maxlen = 100
 format-prefix = " "
 
 exec = ~/.config/polybar/spotify.sh

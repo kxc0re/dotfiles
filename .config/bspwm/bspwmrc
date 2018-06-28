@@ -62,6 +62,7 @@
 	bspc rule -a dmsw 	state=floating
 	bspc rule -a bb 	state=floating
 
+
 	# desktops
 	bspc rule -a firefox 	desktop='^7'
 	bspc rule -a spotify 	desktop='^10'

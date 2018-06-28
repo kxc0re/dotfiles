@@ -1,6 +1,6 @@
 # Load appearance settings
 	xsetroot -cursor_name left_ptr &
-	export GTK2_RC_FILES="$HOME/.gtkrc-2.0" &
+		export GTK2_RC_FILES="$HOME/.gtkrc-2.0" &
 	xrdb merge .Xresources &
 
 # wallpaper
@@ -31,10 +31,7 @@
 	xcape -e 'Super_L=Super_L|Shift_L|space' &
 
 # keyboard stuff
-	# swap to german keyboard layout
-	setxkbmap -layout de
-	# swap caps and escape
-	setxkbmap -option "caps:swapescape"
+	~/.config/keyboard.sh &	
 
 # disable beeps
 	xset -b &

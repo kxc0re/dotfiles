@@ -12,7 +12,7 @@ configuration {
     background:                  #282828FF;
     background-color:            #00000000;
     foreground:                  #ebdbb2FF;
-    selected:                    #ff6600FF;
+    selected:                    #fe8019FF;
     selected-foreground:         #ebdbb2FF;
 
     active-background:           #45858820;
